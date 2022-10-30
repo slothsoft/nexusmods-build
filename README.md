@@ -8,7 +8,7 @@ Scripts for making the work with [NexusMods](https://www.nexusmods.com) easier.
 
 **Content:**
 
-- **[Chapter 1](#using-the-scripts)**
+- **[Using the Scripts](#using-the-scripts)**
   - [Plaintext](#plaintext)
   - [BBCode](#bbcode)
 

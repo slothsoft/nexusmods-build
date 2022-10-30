@@ -15,12 +15,6 @@ powershell -ExecutionPolicy Bypass -File %cd%/scripts/markdown2html.ps1 %inputFo
 powershell -ExecutionPolicy Bypass -File %cd%/scripts/html2bbcode.ps1 %outputFolder%\readme.html %outputFolder%\readme-bbcode.txt https://github.com/slothsoft/nexusmods-build/raw/main/examples/simple
 echo Created file %outputFolder%\readme-bbcode.txt
 
-Rem -------------------------------------------------
-Rem Read Manifest JSON
-Rem -------------------------------------------------
-
-
-
 EXIT /B %ERRORLEVEL%
 
 Rem -------------------------------------------------

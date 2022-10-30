@@ -5,16 +5,15 @@
 
 $htmlFile=$args[0]
 $outputFile=$args[1]
-$repositoryBase=$args[2]
+$repositoryBase=$args[2] # base of GitHub repository
 
 $html = [string]::Join("`n", (gc $htmlFile -encoding utf8))  # Notet that all line separators are \n
 
-# $html = $html -replace '<img(.*?)src="readme/(.*?)"(.*?)width="(.*?)"(.*?)>(\n)+','' # removes images entirely
-# $html = $html -replace '<a href="LICENSE">(.*?)</a>','[url=https://github.com/slothsoft/stardew-informant/blob/main/LICENSE]$1[/url]' # links license
-
 # Fix links to this repository
-$html = $html -replace 'src="./',"src=""$repositoryBase/"
-$html = $html -replace 'href="./',"href=""$repositoryBase/"
+$imageBase = "$repositoryBase/raw/main"
+$html = $html -replace 'src="\./',"src=""$imageBase/"
+$linkBase = "$repositoryBase/blob/main"
+$html = $html -replace 'href="\./',"href=""$linkBase/" 
 
 # Remove unsupported features
 $html = $html -replace '<a href="#(.*?)">(.*?)</a>','$2' # removes anchor links
