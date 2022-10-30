@@ -1,0 +1,12 @@
+{
+  "Name": "My Name",
+  "Author": "Slothsoft",
+  "Version": "1.2.3",
+  "Description": "This is just an example file.",
+  "UniqueID": "Slothsoft.MyName",
+  "EntryDll": "MyName.dll",
+  "MinimumApiVersion": "4.0.0",
+  "UpdateKeys": [
+    "Github:slothsoft/nexusmods-build"
+  ]
+}
