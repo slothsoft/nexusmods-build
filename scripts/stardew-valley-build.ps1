@@ -5,8 +5,8 @@
 # - dotnet publish -c Release
 # ------------------------------------------------------
 
-$projectFolder=$args[1]
-$htmlRefinerScript=$args[2]
+$projectFolder=$args[0]
+$htmlRefinerScript=$args[1]
 
 # Read manifest.json file into a dictionary so we can access various information
 $manifestFile="$projectFolder\manifest.json"
