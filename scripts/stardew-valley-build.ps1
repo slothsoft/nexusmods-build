@@ -7,6 +7,10 @@
 
 $projectFolder=$args[0]
 $htmlRefinerScript=$args[1]
+$clearTargetFolder=$args[2]
+if ($args[2] -eq $null) {
+    $clearTargetFolder = 0
+}
 
 # Read manifest.json file into a dictionary so we can access various information
 $manifestFile="$projectFolder\manifest.json"
@@ -16,11 +20,13 @@ $manifest = @{}
 
 # Clear the target folder
 $targetFolder= "$projectFolder\..\bin"
-if (Test-Path -Path $targetFolder) {
-    Remove-Item $targetFolder -Recurse
-}
-if (-Not (Test-Path -Path $targetFolder)) {
-    New-Item -Path $targetFolder -ItemType Directory | Out-Null
+if (!($clearTargetFolder -eq 0)) { 
+    if (Test-Path -Path $targetFolder) {
+        Remove-Item $targetFolder -Recurse
+    }
+    if (-Not (Test-Path -Path $targetFolder)) {
+        New-Item -Path $targetFolder -ItemType Directory | Out-Null
+    }
 }
 
 # Create a folder that contains everything that should be in the ZIP
@@ -38,8 +44,12 @@ $pdb = $publishFolder + "\" + ($manifest["EntryDll"] -replace '.dll','.pdb')
 Copy-Item $dll -Destination $outputFolder
 Copy-Item $pdb -Destination $outputFolder
 Copy-Item $manifestFile -Destination $outputFolder
-Copy-Item "$projectFolder\assets\" -Destination "$outputFolder\assets\" -Recurse
-Copy-Item "$projectFolder\i18n\" -Destination "$outputFolder\i18n\" -Recurse
+if (Test-Path -Path "$projectFolder\assets\") {
+    Copy-Item "$projectFolder\assets\" -Destination "$outputFolder\assets\" -Recurse
+}
+if (Test-Path -Path "$projectFolder\i18n\") {
+    Copy-Item "$projectFolder\i18n\" -Destination "$outputFolder\i18n\" -Recurse
+}
 Copy-Item "$projectFolder\..\LICENSE" -Destination "$outputFolder\LICENSE"
 
 # Make a HTML file out of the README
@@ -64,7 +74,7 @@ Remove-Item $zipFolder -Recurse
 Write-Host "Create ZIP file: $zipFile"
 
 # Create Readme Files for Nexus
-& "$PSScriptRoot\markdown2plaintext.ps1" $readmeFile "$targetFolder\Readme.txt"
+& "$PSScriptRoot\markdown2plaintext.ps1" $readmeFile "$targetFolder\Readme.txt" $repositoryBase
 $readmeFolder = "$projectFolder\..\readme"
 $htmlFile = "$readmeFolder\readme.html"
 & "$PSScriptRoot\markdown2html.ps1" $readmeFile $htmlFile
