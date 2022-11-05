@@ -60,7 +60,7 @@ pandoc $readmeFile -f markdown -t html -s -o $outputReadmeFile --metadata title=
 
 # Replace the image and other URLs of the HTML
 $html = [string]::Join("`n", (gc $outputReadmeFile -encoding utf8))
-$repositoryBase=$manifest["UpdateKeys"][0] -replace "Github:","https://github.com/"
+$repositoryBase=$manifest["UpdateKeys"][1] -replace "Github:","https://github.com/"
 $imageBase = "$repositoryBase/raw/main"
 $html = $html -replace 'src="\./',"src=""$imageBase/"
 $linkBase = "$repositoryBase/blob/main"
