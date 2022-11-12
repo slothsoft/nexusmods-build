@@ -1,4 +1,4 @@
-Simple Example
+﻿Simple Example
 
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
 ligula eget dolor. Aenean massa.
@@ -60,9 +60,6 @@ leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.
 Sed consequat, leo eget bibendum sodales, augue velit cursus nunc.~~
 
   [Stef Schulz]: mailto:s.schulz@slothsoft.de
-  [Chapter 1]: #chapter-1
-  [Chapter 2]: #chapter-2
-  [Chapter 3]: #chapter-3
-  [Cras dapibus]: ./README.md
+  [Cras dapibus]: https://github.com/slothsoft/nexusmods-build/blob/main/examples/simple/README.md
   [tellus]: https://www.google.com/
-  [Maecenas tempus]: ./butterfly.jpg
+  [Maecenas tempus]: https://github.com/slothsoft/nexusmods-build/blob/main/examples/simple/butterfly.jpg

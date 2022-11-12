@@ -6,13 +6,14 @@
 $htmlFile=$args[0]
 $outputFile=$args[1]
 $repositoryBase=$args[2] # base of GitHub repository
+$repositoryPath=$args[3] # relative path to the files
 
 $html = [string]::Join("`n", (gc $htmlFile -encoding utf8))  # Notet that all line separators are \n
 
 # Fix links to this repository
-$imageBase = "$repositoryBase/raw/main"
+$imageBase = "$repositoryBase/raw/main$repositoryPath"
 $html = $html -replace 'src="\./',"src=""$imageBase/"
-$linkBase = "$repositoryBase/blob/main"
+$linkBase = "$repositoryBase/blob/main$repositoryPath"
 $html = $html -replace 'href="\./',"href=""$linkBase/" 
 
 # Remove unsupported features

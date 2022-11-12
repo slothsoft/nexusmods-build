@@ -24,7 +24,7 @@ In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum fe
 
 [size=5]Section B[/size]
 [list=1]
-[*][url=https://github.com/slothsoft/nexusmods-build/raw/main/examples/simple/README.md]Cras dapibus[/url]
+[*][url=https://github.com/slothsoft/nexusmods-build/blob/main/examples/simple/README.md]Cras dapibus[/url]
 [*]Vivamus elementum semper nisi
 [*]Aenean vulputate eleifend [i][url=https://www.google.com/]tellus[/url][/i]
 [/list]

@@ -7,6 +7,7 @@
   "EntryDll": "MyName.dll",
   "MinimumApiVersion": "4.0.0",
   "UpdateKeys": [
+    "Nexus:12345",
     "Github:slothsoft/nexusmods-build"
   ]
 }
