@@ -86,8 +86,9 @@ if ($htmlRefinerScript) {
 & "$PSScriptRoot\html2bbcode.ps1" $htmlFile $readmeFolder\bbcode.txt $repositoryBase
 
 # Replace the Versions Table with a Nice List
-. "$PSScriptRoot\bbcode-readme-functions.ps1" 
-ReplaceVersionsTable -inputFile $readmeFolder\bbcode.txt -sectionName 'Translator Guide'
+. "$PSScriptRoot\bbcode-readme-functions.ps1"
+ReplaceVersionsTable -inputFile $readmeFolder\bbcode.txt -sectionName 'Versions'
+ReplaceTranslationTable -inputFile $readmeFolder\bbcode.txt -sectionName 'Translator Guide'
 
 # Clean up
 Remove-Item "$readmeFolder\readme.html"

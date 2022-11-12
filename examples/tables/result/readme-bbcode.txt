@@ -21,6 +21,14 @@ Right now, not all translations are provided.
 
 Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, [b]fringilla vel[/b], aliquet nec, vulputate eget, arcu.
 
+[size=6]Versions Table[/size]
+[list]
+[*] [B]Future[/B] ([url=https://github.com/slothsoft/nexusmods-build/milestone/4]Issues[/url]): 
+[*] [B]1.0.0[/B] ([url=https://github.com/slothsoft/nexusmods-build/milestone/3?closed=1]Issues[/url]): Change 1
+[*] [B]0.5.0[/B] ([url=https://github.com/slothsoft/nexusmods-build/milestone/2?closed=1]Issues[/url]): Change 2
+[*] [B]0.4.0[/B] ([url=https://github.com/slothsoft/nexusmods-build/milestone/1?closed=1]Issues[/url]): Change 3
+[/list]
+
 [size=6]Other Table[/size]
 [table]
 [th]

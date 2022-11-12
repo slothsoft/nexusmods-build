@@ -28,7 +28,7 @@ echo Created file %outputFolder%\readme.txt
 
 powershell -ExecutionPolicy Bypass -File %cd%/scripts/markdown2html.ps1 %inputFolder%\README.md %outputFolder%\readme.html
 powershell -ExecutionPolicy Bypass -File %cd%/scripts/html2bbcode.ps1 %outputFolder%\readme.html %outputFolder%\readme-bbcode.txt https://github.com/slothsoft/nexusmods-build /examples/tables
-powershell -ExecutionPolicy Bypass -command ". "%cd%/scripts/bbcode-readme-functions.ps1"; ReplaceVersionsTable -inputFile %outputFolder%\readme-bbcode.txt -sectionName 'Translations';"
+powershell -ExecutionPolicy Bypass -command ". "%cd%/scripts/bbcode-readme-functions.ps1"; ReplaceTranslationTable -inputFile %outputFolder%\readme-bbcode.txt -sectionName 'Translations'; ReplaceVersionsTable -inputFile %outputFolder%\readme-bbcode.txt -sectionName 'Versions Table';"
 echo Created file %outputFolder%\readme-bbcode.txt
 
 
