@@ -4,10 +4,25 @@
 # ------------------------------------------------------
 
 function ReplaceVersionsTable {
-    Param ([string]$inputFile, [string]$outputFile)
+    Param ([string]$inputFile, [string]$outputFile, [string]$sectionName)
 
     $bbcode = [string]::Join("`n", (gc $inputFile -encoding utf8))
 
+    # Fetch the entire table that should be replaced
+    $bbcode = $bbcode -replace "(?ms)((.*)`]$sectionName(.*?))table",'$1replaced-table' -replace "(?ms)`/table`](.*)",'/replaced-table]$1'
+    $originalTable = $bbcode -replace "(?ms)(.*)`\`[replaced-table`]`n",'' -replace "(?ms)`\`[`/replaced-table(.*)",''
+    # Write-Host $originalTable
+
+    $replacedTable = $originalTable
+    
+    # Before: [tr] [td]CODE[/td] [td]LANGUAGE[/td] [td]TRANSLATED[/td] [/tr]
+    # After: [list] [*] LANGUAGE (CODE): TRANSLATED[/list] 
+    $replacedTable = $replacedTable  -replace 
+            "(?ms)`\`[th`](.*)`\`[`/th`]",'' -replace
+            "(?ms)`\`[tr`]`n`\`[td`](.*?)`\`[`/td`]`n`\`[td`](.*?)`\`[`/td`]`n`\`[td`](.*?)`\`[`/td`]`n`\`[`/tr`]",'[*] $2 ($1): $3'
+    
+    $bbcode =  $bbcode -replace "(?ms)`\`[replaced-table(.*)replaced-table`]", "[list]$replacedTable[/list]"
+    
     if (!$outputFile) { $outputFile = $inputFile }
     $bbcode| Out-File -encoding utf8 $outputFile
 }

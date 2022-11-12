@@ -14,11 +14,17 @@ $html = [string]::Join("`n", (gc $htmlFile -encoding utf8))  # Notet that all li
 $imageBase = "$repositoryBase/raw/main$repositoryPath"
 $html = $html -replace 'src="\./',"src=""$imageBase/"
 $linkBase = "$repositoryBase/blob/main$repositoryPath"
-$html = $html -replace 'href="\./',"href=""$linkBase/" 
+$html = $html -replace 'href="\./',"href=""$linkBase/"
+
+# Fix ASCII emojis
+$html = $html -replace '✅','&#9989;'
+$html = $html -replace '🔜','&#128284;'
 
 # Remove unsupported features
 $html = $html -replace '<a href="#(.*?)">(.*?)</a>','$2' # removes anchor links
 
+# Replace inline-code tags because in BBCode it's a block
+$html = $html -replace '<code(.*?)>(.*?)</code>', '[font=Courier New][color=#00ffff]$2[/color][/font]'
 # Replace simple formatting tags (tags that are the same in HTML and BBCode)
 $html = $html -replace '<([/]*(table|tr|th|td|code))(.*?)>','[$1]'
 
