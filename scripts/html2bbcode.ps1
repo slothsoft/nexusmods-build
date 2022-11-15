@@ -19,6 +19,8 @@ $html = $html -replace 'href="\./',"href=""$linkBase/"
 # Fix ASCII emojis (see https://www.w3schools.com/charsets/ref_emoji.asp )
 $html = $html -replace '✅','&#9989;'
 $html = $html -replace '🔜','&#128284;'
+$html = $html -replace '❎','&#10062;'
+$html = $html -replace '❌','&#10060;'
 
 # Remove unsupported features
 $html = $html -replace '<a href="#(.*?)">(.*?)</a>','$2' # removes anchor links
